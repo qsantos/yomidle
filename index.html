@@ -18,7 +18,18 @@ h1 {
 h1 .k, h1:hover .r { display:block; }
 h1:hover .k, h1 .r { display:none; }
 h3 {
-    text-align:center;
+    display:flex;
+    background-color:rgba(255, 255, 255, .3);
+}
+h3 .after, h3 .before {
+    flex:1;
+    align-self: center;
+}
+h3 .before {
+    text-align: right;
+}
+h3 .challenge {
+    font-size:70px;
 }
 #choices {
     display: flex;
@@ -51,7 +62,7 @@ button:active {
 </style>
 <main>
 <h1><span class="k">読midle</span><span class="r">Yomidle</span></h1>
-<h3>How do you read <span class="challenge">行方不明</span>?</h3>
+<h3><span class="before" lang=en>How do you read </span><span class="challenge">行方不明</span><span class="after" lang=en>?</span></h3>
 <div id=choices>
 <button class="correct-choice">ゆくえふめい</button>
 <button>こうほうふめい</button>
