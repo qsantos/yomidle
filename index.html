@@ -4,12 +4,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yomidle</title>
 <style>
+html {
+    height: 100%;
+}
 body {
     background-image: url("background.webp");
     background-position: center 0%;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-color: #b3d1de;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 h1 {
     text-align:right;
@@ -32,16 +39,13 @@ h3 .challenge {
     font-size:70px;
 }
 #choices {
+    margin: auto 0 0 0;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
     width:100%;
     align-items: center;
     justify-content: space-around;
-    position: absolute;
-    left:0;
-    bottom: 10vh;
-    padding:0;
 }
 button {
     width: 300px;
@@ -60,7 +64,6 @@ button:active {
     background:#d7d7d7;
 }
 </style>
-<main>
 <h1><span class="k">読midle</span><span class="r">Yomidle</span></h1>
 <h3><span class="before" lang=en>How do you read </span><span class="challenge">行方不明</span><span class="after" lang=en>?</span></h3>
 <div id=choices>
