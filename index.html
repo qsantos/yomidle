@@ -89,3 +89,18 @@ h3 .challenge::after, button div::after {
 <button><div>こうほうふめい</div></button>
 <button><div>いきかたふめい</div></button>
 <button><div>ゆくかたふめい</div></button>
+</div>
+<script>
+document.addEventListener('click', event => {
+    const t = event.target;
+    const button = t.tagName == 'DIV' ? t.parentElement : t;
+    if (button.tagName != 'BUTTON') {
+        return false;
+    }
+    if (button.classList.contains('correct-choice')) {
+        alert('This is correct!');
+    } else {
+        alert('This is incorrect.');
+    }
+});
+</script>
