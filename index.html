@@ -63,11 +63,23 @@ button:hover {
 button:active {
     background:#d7d7d7;
 }
+/* Prevent text detection by 10ten and such on quiz elements */
+h3 .challenge, button div {
+    position: relative;
+}
+h3 .challenge::after, button div::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 </style>
 <h1><span class="k">読midle</span><span class="r">Yomidle</span></h1>
 <h3><span class="before" lang=en>How do you read </span><span class="challenge">行方不明</span><span class="after" lang=en>?</span></h3>
 <div id=choices>
-<button class="correct-choice">ゆくえふめい</button>
-<button>こうほうふめい</button>
-<button>いきかたふめい</button>
-<button>ゆくかたふめい</button>
+<button class="correct-choice"><div>ゆくえふめい</div></button>
+<button><div>こうほうふめい</div></button>
+<button><div>いきかたふめい</div></button>
+<button><div>ゆくかたふめい</div></button>
