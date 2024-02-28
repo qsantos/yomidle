@@ -28,6 +28,11 @@ h3 {
     display:flex;
     background-color:rgba(255, 255, 255, .7);
 }
+@media (max-width:480px) {
+    h3 {
+        flex-direction: column;
+    }
+}
 h3 .after, h3 .before {
     flex:1;
     align-self: center;
@@ -36,6 +41,7 @@ h3 .before {
     text-align: right;
 }
 h3 .challenge {
+    text-align: center;
     font-size:70px;
 }
 #choices {
