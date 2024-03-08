@@ -18,6 +18,15 @@ h1 {
 }
 h1 .k, h1:hover .r { display:block; }
 h1:hover .k, h1 .r { display:none; }
+#help {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
+    border-radius: 40px;
+}
 h3 {
     background: #f7f7f7;
     margin: 50px auto 50px auto;
@@ -35,15 +44,17 @@ h3 {
     max-width: 1200px;
     justify-content: space-around;
 }
-button {
+#choices button {
     width: 550px;
     height: 200px;
-    color: #1b2f4b;
-    background: #f7f7f7;
     border-radius: 25px;
-    text-align: center;
     font-size: 70px;
     margin: 20px;
+}
+button {
+    text-align: center;
+    color: #1b2f4b;
+    background: #f7f7f7;
 }
 button:hover {
     background:#eee;
@@ -65,6 +76,7 @@ h3::after, button div::after {
 }
 </style>
 <h1><span class="k">読midle</span><span class="r">Yomidle</span></h1>
+<button id="help">?</button>
 <h3>行方不明</h3>
 <div id=choices>
 <button class="correct-choice"><div>ゆくえふめい</div></button>
@@ -75,6 +87,9 @@ h3::after, button div::after {
 <script>
 document.addEventListener('click', event => {
     const t = event.target;
+    if (t.id == 'help') {
+        return false;
+    }
     const button = t.tagName == 'DIV' ? t.parentElement : t;
     if (button.tagName != 'BUTTON') {
         return false;
