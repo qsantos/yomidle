@@ -26,22 +26,7 @@ h1 {
 h1 .k, h1:hover .r { display:block; }
 h1:hover .k, h1 .r { display:none; }
 h3 {
-    display:flex;
     background-color:rgba(255, 255, 255, .7);
-}
-@media (max-width:480px) {
-    h3 {
-        flex-direction: column;
-    }
-}
-h3 .after, h3 .before {
-    flex:1;
-    align-self: center;
-}
-h3 .before {
-    text-align: right;
-}
-h3 .challenge {
     text-align: center;
     font-size:70px;
     padding: 10px;
@@ -74,10 +59,10 @@ button:active {
     background:#d7d7d7;
 }
 /* Prevent text detection by 10ten and such on quiz elements */
-h3 .challenge, button div {
+h3, button div {
     position: relative;
 }
-h3 .challenge::after, button div::after {
+h3::after, button div::after {
     content: "";
     position: absolute;
     top: -1px;
@@ -87,7 +72,7 @@ h3 .challenge::after, button div::after {
 }
 </style>
 <h1><span class="k">読midle</span><span class="r">Yomidle</span></h1>
-<h3><span class="before" lang=en>How do you read</span><span class="challenge">行方不明</span><span class="after" lang=en>?</span></h3>
+<h3>行方不明</h3>
 <div id=choices>
 <button class="correct-choice"><div>ゆくえふめい</div></button>
 <button><div>こうほうふめい</div></button>
