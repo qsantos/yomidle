@@ -132,9 +132,18 @@ h3::after, button div::after {
 </div>
 </div>
 <script>
+const modal = document.getElementById('help-modal-wrapper');
+if (localStorage.getItem('help-shown') == 'true') {
+    modal.style.display = 'none';
+}
 document.addEventListener('click', event => {
     const t = event.target;
     if (t.id == 'help-button') {
+        modal.style.display = 'block';
+        return false;
+    } else if (t.id == 'help-modal-wrapper' || t.classList.contains('close-button')) {
+        localStorage.setItem('help-shown', 'true');
+        modal.style.display = 'none';
         return false;
     }
     const button = t.tagName == 'DIV' ? t.parentElement : t;
