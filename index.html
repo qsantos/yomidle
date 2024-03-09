@@ -18,7 +18,7 @@ h1 {
 }
 h1 .k, h1:hover .r { display:block; }
 h1:hover .k, h1 .r { display:none; }
-#help {
+#help-button {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -44,14 +44,14 @@ h3 {
     max-width: 1200px;
     justify-content: space-around;
 }
-#choices button {
+.choice {
     width: 550px;
     height: 200px;
     border-radius: 25px;
     font-size: 70px;
     margin: 20px;
 }
-button {
+.choice {
     text-align: center;
     color: #1b2f4b;
     background: #f7f7f7;
@@ -74,20 +74,67 @@ h3::after, button div::after {
     right: -1px;
     bottom: -1px;
 }
+#help-modal-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+#help-modal {
+    max-width:700px;
+    margin: 20px auto;
+    padding: 10px;
+    background: #f7f7f7;
+    position: relative;
+    border: 5px solid #1b2f4b;
+}
+#help-modal .close-button {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    font-size: 50px;
+    line-height: 50px;
+}
+#help-modal h2 {
+    text-align: center
+}
+#help-modal p {
+    max-width: 450px;
+    margin: 0 auto;
+}
 </style>
 <h1><span class="k">読midle</span><span class="r">Yomidle</span></h1>
-<button id="help">?</button>
+<button id="help-button">?</button>
 <h3>行方不明</h3>
 <div id=choices>
-<button class="correct-choice"><div>ゆくえふめい</div></button>
-<button><div>こうほうふめい</div></button>
-<button><div>いきかたふめい</div></button>
-<button><div>ゆくかたふめい</div></button>
+<button class="choice correct-choice"><div>ゆくえふめい</div></button>
+<button class="choice"><div>こうほうふめい</div></button>
+<button class="choice"><div>いきかたふめい</div></button>
+<button class="choice"><div>ゆくかたふめい</div></button>
+</div>
+<div id="help-modal-wrapper">
+<div id="help-modal" lang=en>
+    <h2>Yomidle</h2>
+    <div class="close-button">×</div>
+    <p>Yomidle is a daily challenge where you have to guess (or better, know!) the reading of a Japanese word.</p>
+    <ol>
+        <li>Read the Japanese word written in kanji</li>
+        <li>Choose the correct reading among for 4 choices written in hiragana</li>
+        <li>Read the answer, and learn the meaning of the word</li>
+        <li>Come back tomorrow!</li>
+    </ol>
+    <span>For example, if the word is:</span>
+    <h3 lang=ja style="margin: 30px auto">行方不明</h3>
+    <span>Then, you should click on:</span>
+    <button lang=ja class="choice" disabled style="display:block; margin:30px auto"><div>ゆくえふめい</div></button>
+</div>
 </div>
 <script>
 document.addEventListener('click', event => {
     const t = event.target;
-    if (t.id == 'help') {
+    if (t.id == 'help-button') {
         return false;
     }
     const button = t.tagName == 'DIV' ? t.parentElement : t;
