@@ -44,8 +44,9 @@
 </dialog>
 <script>
 const modal = document.getElementById('help-modal');
-if (localStorage.getItem('help-shown') == 'true') {
-    modal.close();
+if (localStorage.getItem('help-shown') != 'true') {
+    modal.showModal();
+    modal.blur();
 }
 document.addEventListener('click', event => {
     const t = event.target;
