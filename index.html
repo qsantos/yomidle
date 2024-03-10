@@ -182,7 +182,18 @@ document.addEventListener('click', event => {
     if (t.id == 'help-button') {
         modal.showModal();
         return false;
-    } else if (t.id == 'help-modal' || t.classList.contains('close-button')) {
+    } else if (t.id == 'help-modal') {
+        // inspired from https://stackoverflow.com/a/57463812/4457767
+        const rect = t.getBoundingClientRect();
+        const clickedInDialog = (
+            rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
+            rect.left <= event.clientX && event.clientX <= rect.left + rect.width
+        );
+        if (!clickedInDialog) {
+            modal.close();
+            return false;
+        }
+    } else if (t.classList.contains('close-button')) {
         localStorage.setItem('help-shown', 'true');
         modal.close();
         return false;
