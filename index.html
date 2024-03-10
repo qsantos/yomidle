@@ -120,7 +120,7 @@ h3::after, button div::after {
 <button id="help-button">?</button>
 <h3>行方不明</h3>
 <div id=choices>
-<button class="choice correct-choice"><div>ゆくえふめい</div></button>
+<button class="choice" data-correct><div>ゆくえふめい</div></button>
 <button class="choice"><div>こうほうふめい</div></button>
 <button class="choice"><div>いきかたふめい</div></button>
 <button class="choice"><div>ゆくかたふめい</div></button>
@@ -161,7 +161,7 @@ document.addEventListener('click', event => {
     if (button.tagName != 'BUTTON') {
         return false;
     }
-    if (button.classList.contains('correct-choice')) {
+    if (button.dataset.correct !== undefined) {
         alert('This is correct!');
     } else {
         alert('This is incorrect.');
