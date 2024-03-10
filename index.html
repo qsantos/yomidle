@@ -48,6 +48,9 @@ if (localStorage.getItem('help-shown') != 'true') {
     modal.showModal();
     modal.blur();
 }
+modal.addEventListener('close', () => {
+    localStorage.setItem('help-shown', 'true');
+});
 document.addEventListener('click', event => {
     const t = event.target;
     if (t.id == 'help-button') {
@@ -65,7 +68,6 @@ document.addEventListener('click', event => {
             return false;
         }
     } else if (t.classList.contains('close-button')) {
-        localStorage.setItem('help-shown', 'true');
         modal.close();
         return false;
     }
