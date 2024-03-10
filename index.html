@@ -31,7 +31,7 @@ h1:hover .k, h1 .r { display:none; }
 }
 h3 {
     background: #f7f7f7;
-    margin: 50px auto 50px auto;
+    margin: 30px auto 0px auto;
     border-radius: 50px;
     width: 650px;
     text-align: center;
@@ -126,7 +126,7 @@ h3 {
     h3 {
         font-size: 50px;
         width: 325px;
-        margin: 25px auto 25px auto;
+        margin: 25px auto 0px auto;
     }
     .choice {
         width: 275px;
@@ -166,6 +166,19 @@ h3::after, button div::after {
     bottom: -1px;
     z-index: 1;
 }
+#answer {
+    font-size: 30px;
+    padding: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    border: 5px solid #1b2f4b;
+    background: #f7f7f7;
+}
+#answer .reading {
+    font-size: 100px;
+    text-align: center;
+    margin: 5px 0 0 0;
+}
 ::backdrop {
     background: rgba(0, 0, 0, .5);
 }
@@ -201,6 +214,16 @@ h3::after, button div::after {
 <button class="choice" data-correct><div>ゆくえふめい</div></button>
 <button class="choice"><div>ゆくかたふめい</div></button>
 </div>
+</div>
+<div id="answer" lang=en>
+    <p class="reading" lang=ja>
+        <ruby>行<rt>ゆく</rt>方<rt>え</rt>不<rt>ふ</rt>明<rt>めい</rt></ruby>
+    </p>
+    <ol>
+        <li>missing (of a person); lost; unaccounted for; whereabouts unknown</li>
+    </ol>
+    <a href="https://jisho.org/word/%E8%A1%8C%E6%96%B9%E4%B8%8D%E6%98%8E">More about the word</a><br>
+    <a href="https://jisho.org/search/%E8%A1%8C%E6%96%B9%E4%B8%8D%E6%98%8E%20%23kanji">More about the kanji</a>
 </div>
 <dialog id="help-modal" lang=en>
     <h2>Yomidle</h2>
