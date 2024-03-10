@@ -176,6 +176,14 @@ h3::after, button div::after {
     text-align: center;
     margin: 5px 0 0 0;
 }
+@media (max-width: 750px) {
+    #answer {
+        font-size: 15px;
+    }
+    #answer .reading {
+        font-size: 50px;
+    }
+}
 ::backdrop {
     background: rgba(0, 0, 0, .5);
 }
