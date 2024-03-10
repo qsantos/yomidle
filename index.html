@@ -50,6 +50,30 @@ h3 {
     border-radius: 25px;
     font-size: 70px;
     margin: 20px;
+    position: relative;
+}
+.choice::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    font-size: 200px;
+    line-height: 200px;
+}
+@keyframes smooth-appear {
+  to {
+      opacity: 0.8;
+  }
+}
+.correct-choice::after {
+    content: "⭕️";
+    animation: smooth-appear 1s ease forwards;
+}
+.incorrect-choice::after {
+    content: "❌";
+    animation: smooth-appear 1s ease forwards;
 }
 @media (max-width: 750px) {
     h3 {
@@ -162,9 +186,9 @@ document.addEventListener('click', event => {
         return false;
     }
     if (button.dataset.correct !== undefined) {
-        alert('This is correct!');
+        button.classList.add('correct-choice');
     } else {
-        alert('This is incorrect.');
+        button.classList.add('incorrect-choice');
     }
 });
 </script>
