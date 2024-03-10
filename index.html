@@ -41,9 +41,11 @@ h3 {
 }
 #choices {
     margin: 0 auto;
+    max-width: 1200px;
+}
+.choices-row {
     display: flex;
     flex-wrap: wrap;
-    max-width: 1200px;
     justify-content: space-around;
 }
 .choice {
@@ -53,6 +55,11 @@ h3 {
     font-size: 70px;
     margin: 20px;
     position: relative;
+    transition: all 1s ease;
+    overflow: hidden;
+}
+.choice div {
+    width: 550px;
 }
 .choice::after {
     position: absolute;
@@ -64,6 +71,43 @@ h3 {
     height:200px;
     width:200px;
     margin: 0 auto;
+}
+.choices-row:has(.correct-choice) {
+    justify-content: center;
+}
+/* 4x1 */
+@media (max-width: 645px) {
+    @keyframes smooth-disappear {
+        30% {
+            opacity: 0;
+        }
+        to {
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+    }
+}
+/* 2x2 */
+@media (min-width: 646px) {
+    @keyframes smooth-disappear {
+        30% {
+            opacity: 0;
+        }
+        to {
+            width: 0;
+            opacity: 0;
+            height: 0;
+            margin: 0;
+            border: 0;
+            padding: 0;
+        }
+    }
+}
+#choices:has(.correct-choice) button:not(.correct-choice) {
+    animation: smooth-disappear 1s ease forwards;
 }
 @keyframes smooth-appear {
   to {
@@ -87,6 +131,9 @@ h3 {
         width: 275px;
         height: 100px;
         font-size: 35px;
+    }
+    .choice div {
+        width: 275px;
     }
     .choice::after {
         height: 100px;
@@ -148,10 +195,14 @@ h3::after, button div::after {
 <button id="help-button">?</button>
 <h3>行方不明</h3>
 <div id=choices>
-<button class="choice" data-correct><div>ゆくえふめい</div></button>
+<div class=choices-row>
 <button class="choice"><div>こうほうふめい</div></button>
 <button class="choice"><div>いきかたふめい</div></button>
+</div>
+<div class=choices-row>
+<button class="choice" data-correct><div>ゆくえふめい</div></button>
 <button class="choice"><div>ゆくかたふめい</div></button>
+</div>
 </div>
 <dialog id="help-modal" lang=en>
     <h2>Yomidle</h2>
