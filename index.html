@@ -115,7 +115,7 @@ h3::after, button div::after {
     bottom: -1px;
     z-index: 1;
 }
-#help-modal-wrapper {
+::backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -155,8 +155,7 @@ h3::after, button div::after {
 <button class="choice"><div>いきかたふめい</div></button>
 <button class="choice"><div>ゆくかたふめい</div></button>
 </div>
-<div id="help-modal-wrapper">
-<div id="help-modal" lang=en>
+<dialog id="help-modal" lang=en>
     <h2>Yomidle</h2>
     <div class="close-button">×</div>
     <p>Yomidle is a daily challenge where you have to guess (or better, know!) the reading of a Japanese word.</p>
@@ -170,21 +169,20 @@ h3::after, button div::after {
     <h3 lang=ja style="margin: 30px auto">行方不明</h3>
     <span>Then, you should click on:</span>
     <button lang=ja class="choice" disabled style="display:block; margin:30px auto"><div>ゆくえふめい</div></button>
-</div>
-</div>
+</dialog>
 <script>
-const modal = document.getElementById('help-modal-wrapper');
+const modal = document.getElementById('help-modal');
 if (localStorage.getItem('help-shown') == 'true') {
-    modal.style.display = 'none';
+    modal.close();
 }
 document.addEventListener('click', event => {
     const t = event.target;
     if (t.id == 'help-button') {
-        modal.style.display = 'block';
+        modal.showModal();
         return false;
-    } else if (t.id == 'help-modal-wrapper' || t.classList.contains('close-button')) {
+    } else if (t.id == 'help-modal' || t.classList.contains('close-button')) {
         localStorage.setItem('help-shown', 'true');
-        modal.style.display = 'none';
+        modal.close();
         return false;
     }
     const button = t.tagName == 'DIV' ? t.parentElement : t;
