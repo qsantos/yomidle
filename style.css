@@ -168,6 +168,9 @@ h3::after, button div::after {
     border: 5px solid #1b2f4b;
     background: #f7f7f7;
 }
+#choices:has(.correct-choice) ~ #answer {
+    display: block !important;
+}
 #answer .reading {
     font-size: 100px;
     text-align: center;
