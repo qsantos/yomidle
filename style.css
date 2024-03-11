@@ -26,7 +26,8 @@ h1:hover .k, h1 .r { display:none; }
 h3 {
     background: #f7f7f7;
     margin: 30px auto 0px auto;
-    border-radius: 50px;
+    border: 5px solid #1b2f4b;
+    border-radius: 25px;
     width: 650px;
     text-align: center;
     font-size: 100px;
@@ -120,12 +121,14 @@ h3 {
         font-size: 50px;
         width: 325px;
         margin: 25px auto 0px auto;
+        border-radius: 12.5px;
     }
     .choice {
         width: 275px;
         height: 100px;
         font-size: 35px;
         margin: 10px;
+        border-radius: 12.5px;
     }
     .choice div {
         width: 275px;
@@ -164,6 +167,7 @@ h3::after, button div::after {
     padding: 10px;
     max-width: 700px;
     margin: 0 auto;
+    border-radius: 25px;
     border: 5px solid #1b2f4b;
     background: #f7f7f7;
     transition: all 1s ease;
@@ -179,6 +183,7 @@ h3::after, button div::after {
 @media (max-width: 750px) {
     #answer {
         font-size: 15px;
+        border-radius: 12.5px;
     }
     #answer .reading {
         font-size: 50px;
