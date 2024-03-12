@@ -3,7 +3,7 @@ import random
 
 
 def main() -> None:
-    with open('2024-03-11') as f:
+    with open('challenges/000') as f:
         challenge, ruby, choice1, choice2, choice3, choice4, *meaning = f.read().strip().split('\n')
 
     choice1 = f'<button class="choice" data-correct><div>{choice1}</div></button>'
