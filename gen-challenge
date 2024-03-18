@@ -10,8 +10,8 @@ from edict.ruby import ruby_from_kanji_kana
 START = date(2024, 3, 11)
 
 
-def gen_challenge(challenge: Path, output: Path):
-    with open(challenge) as f:
+def gen_challenge(input: Path, output: Path):
+    with open(input) as f:
         challenge, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
 
     # Prepare ruby
