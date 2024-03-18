@@ -8,10 +8,8 @@ from edict.ruby import ruby_from_kanji_kana
 START = date(2024, 3, 11)
 
 
-def main() -> None:
-    challenges = glob('challenges/*')
-    delta = (date.today() - START).days % len(challenges)
-    with open(f'challenges/{delta:03}') as f:
+def gen_challenge(challenge: str, output: str):
+    with open(challenge) as f:
         challenge, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
 
     # Prepare ruby
@@ -29,8 +27,14 @@ def main() -> None:
     with open('template.html') as f:
         template = f.read()
     html = string.Template(template).substitute(template, **locals())
-    with open('index.html', 'w') as f:
+    with open(output, 'w') as f:
         f.write(html)
+
+
+def main() -> None:
+    challenges = glob('challenges/*')
+    delta = (date.today() - START).days % len(challenges)
+    gen_challenge(f'challenges/{delta:03}', 'index.html')
 
 
 if __name__ == '__main__':
