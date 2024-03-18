@@ -1,8 +1,9 @@
-from edict.ruby import ruby_from_kanji_kana
 from datetime import date
 from glob import glob
 import string
 import random
+
+from edict.ruby import ruby_from_kanji_kana
 
 START = date(2024, 3, 11)
 
