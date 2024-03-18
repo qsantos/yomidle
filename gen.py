@@ -19,7 +19,6 @@ def main() -> None:
     choices = [choice1, choice2, choice3, choice4]
     random.shuffle(choices)
     [choice1, choice2, choice3, choice4] = choices
-    meaning = ''.join(meaning)
 
     with open('template.html') as f:
         template = f.read()
