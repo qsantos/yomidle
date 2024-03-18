@@ -1,5 +1,7 @@
+from argparse import ArgumentParser
 from datetime import date
-from glob import glob
+from os import makedirs
+from pathlib import Path
 import string
 import random
 
@@ -8,7 +10,7 @@ from edict.ruby import ruby_from_kanji_kana
 START = date(2024, 3, 11)
 
 
-def gen_challenge(challenge: str, output: str):
+def gen_challenge(challenge: Path, output: Path):
     with open(challenge) as f:
         challenge, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
 
@@ -32,9 +34,22 @@ def gen_challenge(challenge: str, output: str):
 
 
 def main() -> None:
-    challenges = sorted(glob('challenges/*'))
-    delta = (date.today() - START).days % len(challenges)
-    gen_challenge(challenges[delta], 'index.html')
+    parser = ArgumentParser()
+    parser.add_argument('--all', action='store_true')
+    args = parser.parse_args()
+
+    challenges = sorted(Path('challenges').glob('*'))
+    if args.all:
+        makedirs('all', exist_ok=True)
+        for challenge in challenges:
+            output = Path('all') / (challenge.name + '.html')
+            print(output)
+            gen_challenge(challenge, output)
+    else:
+        output = Path('index.html')
+        print(output)
+        delta = (date.today() - START).days % len(challenges)
+        gen_challenge(challenges[delta], output)
 
 
 if __name__ == '__main__':
