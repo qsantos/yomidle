@@ -1,6 +1,5 @@
 from argparse import ArgumentParser
 from datetime import date
-from os import makedirs
 from pathlib import Path
 import string
 import random
@@ -40,9 +39,10 @@ def main() -> None:
 
     challenges = sorted(Path('challenges').glob('*'))
     if args.all:
-        makedirs('all', exist_ok=True)
+        dest = Path('all')
+        dest.mkdir(exist_ok=True)
         for challenge in challenges:
-            output = Path('all') / (challenge.name + '.html')
+            output = dest / (challenge.name + '.html')
             print(output)
             gen_challenge(challenge, output)
     else:
