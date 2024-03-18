@@ -32,9 +32,9 @@ def gen_challenge(challenge: str, output: str):
 
 
 def main() -> None:
-    challenges = glob('challenges/*')
+    challenges = sorted(glob('challenges/*'))
     delta = (date.today() - START).days % len(challenges)
-    gen_challenge(f'challenges/{delta:03}', 'index.html')
+    gen_challenge(challenges[delta], 'index.html')
 
 
 if __name__ == '__main__':
