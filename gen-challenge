@@ -28,7 +28,7 @@ def gen_challenge(input: Path, output: Path):
 
     with open('template.html') as f:
         template = f.read()
-    html = string.Template(template).substitute(template, **locals())
+    html = string.Template(template).substitute(**locals())
     with open(output, 'w') as f:
         f.write(html)
 
