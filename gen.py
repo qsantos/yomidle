@@ -1,3 +1,4 @@
+from edict.ruby import ruby_from_kanji_kana
 from datetime import date
 from glob import glob
 import string
@@ -10,8 +11,12 @@ def main() -> None:
     challenges = glob('challenges/*')
     delta = (date.today() - START).days % len(challenges)
     with open(f'challenges/{delta:03}') as f:
-        challenge, ruby, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
+        challenge, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
 
+    # Prepare ruby
+    ruby = ruby_from_kanji_kana(challenge, choice1)
+
+    # Prepare choices
     choice1 = f'<button class="choice" data-correct><div>{choice1}</div></button>'
     choice2 = f'<button class="choice"><div>{choice2}</div></button>'
     choice3 = f'<button class="choice"><div>{choice3}</div></button>'
