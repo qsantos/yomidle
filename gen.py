@@ -10,7 +10,7 @@ def main() -> None:
     challenges = glob('challenges/*')
     delta = (date.today() - START).days % len(challenges)
     with open(f'challenges/{delta:03}') as f:
-        challenge, ruby, choice1, choice2, choice3, choice4, *meaning = f.read().strip().split('\n')
+        challenge, ruby, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
 
     choice1 = f'<button class="choice" data-correct><div>{choice1}</div></button>'
     choice2 = f'<button class="choice"><div>{choice2}</div></button>'
