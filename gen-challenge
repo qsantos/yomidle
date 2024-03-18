@@ -38,16 +38,16 @@ def main() -> None:
     parser.add_argument('--all', action='store_true')
     args = parser.parse_args()
 
+    dest = Path('public')
     challenges = sorted(Path('challenges').glob('*'))
     if args.all:
-        dest = Path('all')
         dest.mkdir(exist_ok=True)
         for challenge in challenges:
             output = dest / (challenge.name + '.html')
             print(output)
             gen_challenge(challenge, output)
     else:
-        output = Path('index.html')
+        output = dest / 'index.html'
         print(output)
         delta = (date.today() - START).days % len(challenges)
         gen_challenge(challenges[delta], output)

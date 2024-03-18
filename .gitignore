@@ -1,2 +1,3 @@
-index.html
 *.pyc
+public/*
+!public/style.css
