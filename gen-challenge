@@ -5,23 +5,27 @@ from pathlib import Path
 import string
 import random
 
-from edict.ruby import ruby_from_anki_furigana, ruby_from_kanji_kana
+from edict.ruby import kana_from_anki_furigana, kanji_from_anki_furigana, ruby_from_anki_furigana
 
 START = date(2024, 3, 11)
 
 
 def gen_challenge(input: Path, output: Path):
     with open(input) as f:
-        challenge, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
+        key, distractor1, distractor2, distractor3, meaning, example, example_translation = f.read().strip().split('\n')
 
-    # Prepare ruby for challenge
-    ruby = ruby_from_kanji_kana(challenge, choice1)
+    # Prepare challenge (kanji only)
+    challenge = kanji_from_anki_furigana(key)
+
+    # Prepare ruby for key
+    key_ruby = ruby_from_anki_furigana(key)
 
     # Prepare choices
-    choice1 = f'<button class="choice" data-correct><div>{choice1}</div></button>'
-    choice2 = f'<button class="choice"><div>{choice2}</div></button>'
-    choice3 = f'<button class="choice"><div>{choice3}</div></button>'
-    choice4 = f'<button class="choice"><div>{choice4}</div></button>'
+    key_kana = kana_from_anki_furigana(key)
+    choice1 = f'<button class="choice" data-correct><div>{key_kana}</div></button>'
+    choice2 = f'<button class="choice"><div>{distractor1}</div></button>'
+    choice3 = f'<button class="choice"><div>{distractor2}</div></button>'
+    choice4 = f'<button class="choice"><div>{distractor3}</div></button>'
     choices = [choice1, choice2, choice3, choice4]
     random.shuffle(choices)
     [choice1, choice2, choice3, choice4] = choices
