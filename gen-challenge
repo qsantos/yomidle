@@ -5,7 +5,7 @@ from pathlib import Path
 import string
 import random
 
-from edict.ruby import ruby_from_kanji_kana
+from edict.ruby import ruby_from_anki_furigana, ruby_from_kanji_kana
 
 START = date(2024, 3, 11)
 
@@ -14,7 +14,7 @@ def gen_challenge(input: Path, output: Path):
     with open(input) as f:
         challenge, choice1, choice2, choice3, choice4, meaning, example, example_translation = f.read().strip().split('\n')
 
-    # Prepare ruby
+    # Prepare ruby for challenge
     ruby = ruby_from_kanji_kana(challenge, choice1)
 
     # Prepare choices
@@ -25,6 +25,9 @@ def gen_challenge(input: Path, output: Path):
     choices = [choice1, choice2, choice3, choice4]
     random.shuffle(choices)
     [choice1, choice2, choice3, choice4] = choices
+
+    # Prepare ruby for example
+    example = ruby_from_anki_furigana(example)
 
     with open('template.html') as f:
         template = f.read()

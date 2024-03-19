@@ -1,4 +1,8 @@
+import re
+
 from .furigana import match_from_kanji_kana
+
+anki_part_regex = re.compile(r'(\S+?)(?:\[(.*?)\])?')
 
 
 def ruby_from_match(match):
@@ -30,3 +34,15 @@ def ruby_from_match(match):
 def ruby_from_kanji_kana(kanji, kana):
     matches = list(match_from_kanji_kana(kanji, kana))
     return ruby_from_match(matches[0])
+
+
+def ruby_from_anki_furigana(s: str) -> str:
+    ret = []
+    ret.append('<ruby>')
+    for match in anki_part_regex.finditer(s):
+        ret.append(match.group(1))
+        ret.append('<rt>')
+        ret.append(match.group(2) or '')
+        ret.append('</rt>')
+    ret.append('</ruby>')
+    return ''.join(ret)
