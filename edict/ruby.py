@@ -1,4 +1,5 @@
 import re
+import unittest
 
 from .furigana import match_from_kanji_kana
 
@@ -60,3 +61,23 @@ def ruby_from_anki_furigana(s: str) -> str:
         ret.append('</rt>')
     ret.append('</ruby>')
     return ''.join(ret)
+
+
+class TestFromAnkiFurigana(unittest.TestCase):
+    def test_ruby(self):
+        self.assertEqual(
+            ruby_from_anki_furigana('今日[きょう]の プレゼンテーション、 御[ご]苦[く]労[ろう]様[さま]でした。'),
+            '<ruby>今日<rt>きょう</rt>の<rt></rt>プレゼンテーション、<rt></rt>御<rt>ご</rt>苦<rt>く</rt>労<rt>ろう</rt>様<rt>さま</rt>でした。<rt></rt></ruby>',
+        )
+
+    def test_kanji(self):
+        self.assertEqual(
+            kanji_from_anki_furigana('今日[きょう]の プレゼンテーション、 御[ご]苦[く]労[ろう]様[さま]でした。'),
+            '今日のプレゼンテーション、御苦労様でした。',
+        )
+
+    def test_kana(self):
+        self.assertEqual(
+            kana_from_anki_furigana('今日[きょう]の プレゼンテーション、 御[ご]苦[く]労[ろう]様[さま]でした。'),
+            'きょうのプレゼンテーション、ごくろうさまでした。',
+        )
