@@ -1,3 +1,4 @@
 *.pyc
+venv/
 public/*
 !public/style.css
