@@ -36,6 +36,20 @@ def ruby_from_kanji_kana(kanji, kana):
     return ruby_from_match(matches[0])
 
 
+def kanji_from_anki_furigana(s: str) -> str:
+    ret = []
+    for match in anki_part_regex.finditer(s):
+        ret.append(match.group(1))
+    return ''.join(ret)
+
+
+def kana_from_anki_furigana(s: str) -> str:
+    ret = []
+    for match in anki_part_regex.finditer(s):
+        ret.append(match.group(2) or match.group(1))
+    return ''.join(ret)
+
+
 def ruby_from_anki_furigana(s: str) -> str:
     ret = []
     ret.append('<ruby>')
