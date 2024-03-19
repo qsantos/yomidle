@@ -3,7 +3,7 @@ import unittest
 
 from .furigana import match_from_kanji_kana
 
-anki_part_regex = re.compile(r'(\S+?)(?:\[(.*?)\])?')
+anki_part_regex = re.compile(r'([^[ ]+)(?:\[(.*?)\])?')
 
 
 def ruby_from_match(match):
