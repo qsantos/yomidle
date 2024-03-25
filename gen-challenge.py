@@ -8,7 +8,7 @@ import string
 import unittest
 
 anki_part_regex = re.compile(r'([^[ ]+)(?:\[(.*?)\])?')
-START = date(2024, 3, 11)
+START = date(2024, 3, 26)
 
 
 def kanji_from_anki_furigana(s: str) -> str:
