@@ -10,6 +10,8 @@ import unittest
 anki_part_regex = re.compile(r'([^[ ]+)(?:\[(.*?)\])?')
 START = date(2024, 3, 26)
 
+SCRIPT_DIR = Path(__file__).parent
+
 
 def kanji_from_anki_furigana(s: str) -> str:
     ret = []
@@ -80,7 +82,7 @@ def gen_challenge(input: Path, output: Path):
     # Prepare ruby for example
     example = ruby_from_anki_furigana(example)
 
-    with open('template.html') as f:
+    with open(SCRIPT_DIR / 'template.html') as f:
         template = f.read()
     html = string.Template(template).substitute(**locals())
     with open(output, 'w') as f:
@@ -93,7 +95,7 @@ def main() -> None:
     parser.add_argument('--output', '-o', default='public/index.html')
     args = parser.parse_args()
 
-    challenges_dir = Path(__file__).parent / 'challenges'
+    challenges_dir = SCRIPT_DIR / 'challenges'
     challenges = sorted(challenges_dir.glob('*'))
     if args.all:
         dest = Path('public')
