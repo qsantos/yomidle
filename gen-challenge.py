@@ -93,9 +93,10 @@ def main() -> None:
     parser.add_argument('--output', '-o', default='public/index.html')
     args = parser.parse_args()
 
-    dest = Path('public')
-    challenges = sorted(Path('challenges').glob('*'))
+    challenges_dir = Path(__file__).parent / 'challenges'
+    challenges = sorted(challenges_dir.glob('*'))
     if args.all:
+        dest = Path('public')
         dest.mkdir(exist_ok=True)
         for challenge in challenges:
             output = dest / (challenge.name + '.html')
