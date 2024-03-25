@@ -90,6 +90,7 @@ def gen_challenge(input: Path, output: Path):
 def main() -> None:
     parser = ArgumentParser()
     parser.add_argument('--all', action='store_true')
+    parser.add_argument('--output', '-o', default='public/index.html')
     args = parser.parse_args()
 
     dest = Path('public')
@@ -101,10 +102,9 @@ def main() -> None:
             print(output)
             gen_challenge(challenge, output)
     else:
-        output = dest / 'index.html'
-        print(output)
+        print(args.output)
         delta = (date.today() - START).days % len(challenges)
-        gen_challenge(challenges[delta], output)
+        gen_challenge(challenges[delta], args.output)
 
 
 if __name__ == '__main__':
